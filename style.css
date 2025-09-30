@@ -1084,12 +1084,12 @@ html {
     }
     
     .widget {
-        min-width: 300px;
+        min-width: 500px;
     }
     
     .stats-container {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 3rem;
     }
     
     .monitoring-grid {
@@ -1857,22 +1857,6 @@ figure[role="img"] {
 
 figure[role="img"]:hover {
     border-color: var(--primary-color);
-}
-
-/* Mejoras en el modo oscuro */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-primary: #1e293b;
-        --bg-secondary: #334155;
-        --bg-card: #475569;
-        --text-primary: #f1f5f9;
-        --text-secondary: #cbd5e1;
-        --border-color: #64748b;
-    }
-    
-    .timeline-item::before {
-        background: var(--secondary-color);
-    }
 }
 
 /* Validación de formularios y controles */
