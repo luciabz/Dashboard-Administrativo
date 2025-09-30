@@ -3,435 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel administrativo avanzado con monitoreo en tiempo real, gestión de usuarios y análisis de datos">
+    <meta name="keywords" content="dashboard, administración, monitoreo, OOHDM">
+    <meta name="author" content="Admin Panel Team">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Dashboard Administrativo - OOHDM">
+    <meta property="og:description" content="Panel administrativo avanzado con monitoreo en tiempo real">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/assets/dashboard-preview.png">
+    
     <title>Dashboard Administrativo - OOHDM</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Favicon and app icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
-<body>
+<body role="document">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Saltar al contenido principal">Saltar al contenido principal</a>
+    
     <!-- Navegación Principal (OOHDM Navigation) -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
         <div class="nav-container">
             <div class="nav-brand">
-                <i class="fas fa-tachometer-alt"></i>
+                <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
                 <span>AdminPanel</span>
             </div>
-            <div class="nav-links">
-                <a href="#dashboard" class="nav-link active" data-section="dashboard">
-                    <i class="fas fa-home"></i> Dashboard
-                </a>
-                <a href="#analytics" class="nav-link" data-section="analytics">
-                    <i class="fas fa-chart-line"></i> Analytics
-                </a>
-                <a href="#users" class="nav-link" data-section="users">
-                    <i class="fas fa-users"></i> Usuarios
-                </a>
-                <a href="#tasks" class="nav-link" data-section="tasks">
-                    <i class="fas fa-tasks"></i> Tareas
-                </a>
-                <a href="#settings" class="nav-link" data-section="settings">
-                    <i class="fas fa-cog"></i> Configuración
-                </a>
-            </div>
-            <div class="nav-profile">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%234f46e5'/%3E%3Ctext x='20' y='25' text-anchor='middle' fill='white' font-size='14' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Admin">
+            
+            <!-- Navigation menu -->
+            <ul class="nav-links" role="menubar" aria-label="Menú de navegación">
+                <li role="none">
+                    <a href="#dashboard" class="nav-link active" data-section="dashboard" role="menuitem" aria-current="page">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+               
+                <li role="none">
+                    <a href="#users" class="nav-link" data-section="users" role="menuitem">
+                        <i class="fas fa-users" aria-hidden="true"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="#tasks" class="nav-link" data-section="tasks" role="menuitem">
+                        <i class="fas fa-tasks" aria-hidden="true"></i>
+                        <span>Tareas</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="#settings" class="nav-link" data-section="settings" role="menuitem">
+                        <i class="fas fa-cog" aria-hidden="true"></i>
+                        <span>Configuración</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- User profile section -->
+            <div class="nav-profile" role="button" tabindex="0" aria-label="Perfil de usuario" aria-haspopup="true">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%234f46e5'/%3E%3Ctext x='20' y='25' text-anchor='middle' fill='white' font-size='14' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Avatar del administrador">
                 <span>Admin</span>
             </div>
         </div>
     </nav>
 
     <!-- Contenedor Principal del Dashboard -->
-    <main class="main-container">
+    <main id="main-content" class="main-container" role="main" aria-label="Contenido principal del dashboard">
         <!-- Sección Dashboard Principal -->
-        <section id="dashboard-section" class="section active">
+        <section id="dashboard-section" class="section active" role="region" aria-labelledby="dashboard-title">
             <header class="section-header">
-                <h1>Dashboard Administrativo</h1>
-                <p>Monitoreo en tiempo real del sistema</p>
+                <h1 id="dashboard-title">Dashboard Administrativo</h1>
+                <p class="section-description">Monitoreo en tiempo real del sistema</p>
             </header>
 
             <!-- Grid de Widgets con Flexbox -->
-            <div class="widgets-grid">
+            <div class="widgets-grid" role="region" aria-label="Panel de widgets del dashboard">
                 <!-- Widget de Estadísticas -->
-                <div class="widget stats-widget">
-                    <div class="widget-header">
-                        <h3>Estadísticas del Sistema</h3>
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="stats-container">
-                        <div class="stat-item" data-tooltip="Usuarios conectados en este momento">
-                            <div class="stat-value" id="users-count">1,247</div>
+                <article class="widget stats-widget" role="region" aria-labelledby="stats-title">
+                    <header class="widget-header">
+                        <h2 id="stats-title">Estadísticas del Sistema</h2>
+                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                    </header>
+                    <div class="stats-container" role="group" aria-label="Métricas principales del sistema">
+                        <div class="stat-item" data-tooltip="Usuarios conectados en este momento" role="img" aria-label="1247 usuarios activos actualmente">
+                            <div class="stat-value" id="users-count" aria-live="polite">1,247</div>
                             <div class="stat-label">Usuarios Activos</div>
                         </div>
-                        <div class="stat-item" data-tooltip="Ingresos generados hoy">
-                            <div class="stat-value" id="sales-count">$42,389</div>
+                        <div class="stat-item" data-tooltip="Ingresos generados hoy" role="img" aria-label="42389 dólares en ventas hoy">
+                            <div class="stat-value" id="sales-count" aria-live="polite">$42,389</div>
                             <div class="stat-label">Ventas Hoy</div>
                         </div>
-                        <div class="stat-item" data-tooltip="Pedidos procesados en las últimas 24h">
-                            <div class="stat-value" id="orders-count">156</div>
+                        <div class="stat-item" data-tooltip="Pedidos procesados en las últimas 24h" role="img" aria-label="156 pedidos procesados">
+                            <div class="stat-value" id="orders-count" aria-live="polite">156</div>
                             <div class="stat-label">Pedidos</div>
                         </div>
                     </div>
-                </div>
+                
+                  <section class="widget monitoring-widget" role="region" aria-labelledby="monitoring-title">
+                    <header class="widget-header">
+                        <h2 id="monitoring-title">Monitoreo del Sistema</h2>
+                        <i class="fas fa-server" aria-hidden="true"></i>
+                    </header>
+                    <div class="monitoring-grid" role="group" aria-label="Métricas de rendimiento del sistema">
+                        <div class="monitor-item" data-tooltip="Uso actual del procesador" role="img" aria-label="CPU al 74% de uso">
+                            <div class="monitor-label">CPU</div>
+                            <div class="circular-progress" data-percentage="74" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" aria-label="Uso de CPU: 74%">
+                                <div class="progress-circle">
+                                    <span class="percentage" aria-live="polite">74%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="monitor-item" data-tooltip="Memoria RAM disponible" role="img" aria-label="RAM al 58% de uso">
+                            <div class="monitor-label">RAM</div>
+                            <div class="circular-progress" data-percentage="58" role="progressbar" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100" aria-label="Uso de RAM: 58%">
+                                <div class="progress-circle">
+                                    <span class="percentage" aria-live="polite">58%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="monitor-item" data-tooltip="Espacio en disco utilizado" role="img" aria-label="Disco al 91% de uso">
+                            <div class="monitor-label">Disco</div>
+                            <div class="circular-progress" data-percentage="91" role="progressbar" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100" aria-label="Uso de disco: 91%">
+                                <div class="progress-circle">
+                                    <span class="percentage" aria-live="polite">91%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+  </article>
 
                 <!-- Widget de Tareas Concurrentes -->
-                <div class="widget tasks-widget">
-                    <div class="widget-header">
-                        <h3>Procesos en Segundo Plano</h3>
-                        <i class="fas fa-sync-alt spinning"></i>
-                    </div>
-                    <div class="concurrent-tasks">
-                        <div class="task-item">
+                <article class="widget tasks-widget" role="region" aria-labelledby="tasks-title">
+                    <header class="widget-header">
+                        <h2 id="tasks-title">Procesos en Segundo Plano</h2>
+                        <i class="fas fa-sync-alt spinning" aria-hidden="true"></i>
+                    </header>
+                    <div class="concurrent-tasks" role="group" aria-label="Lista de tareas en ejecución">
+                        <div class="task-item" role="status" aria-labelledby="task1-name" aria-describedby="task1-status">
                             <div class="task-info">
-                                <span class="task-name">Backup Base de Datos</span>
-                                <span class="task-status processing">Procesando...</span>
+                                <span class="task-name" id="task1-name">Backup Base de Datos</span>
+                                <span class="task-status processing" id="task1-status" aria-live="polite">Procesando...</span>
                             </div>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso del backup: 67%">
                                 <div class="progress-fill" data-progress="67"></div>
                             </div>
                         </div>
-                        <div class="task-item">
+                        <div class="task-item" role="status" aria-labelledby="task2-name" aria-describedby="task2-status">
                             <div class="task-info">
-                                <span class="task-name">Sincronización de Archivos</span>
-                                <span class="task-status processing">En progreso...</span>
+                                <span class="task-name" id="task2-name">Sincronización de Archivos</span>
+                                <span class="task-status processing" id="task2-status" aria-live="polite">En progreso...</span>
                             </div>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso de sincronización: 43%">
                                 <div class="progress-fill" data-progress="43"></div>
                             </div>
                         </div>
-                        <div class="task-item">
+                        <div class="task-item" role="status" aria-labelledby="task3-name" aria-describedby="task3-status">
                             <div class="task-info">
-                                <span class="task-name">Generación de Reportes</span>
-                                <span class="task-status completed">Completado</span>
+                                <span class="task-name" id="task3-name">Generación de Reportes</span>
+                                <span class="task-status completed" id="task3-status" aria-live="polite">Completado</span>
                             </div>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso de reportes: completado">
                                 <div class="progress-fill completed" data-progress="100"></div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
                 <!-- Widget de Monitoreo del Sistema -->
-                <div class="widget monitoring-widget">
-                    <div class="widget-header">
-                        <h3>Monitoreo del Sistema</h3>
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div class="monitoring-grid">
-                        <div class="monitor-item" data-tooltip="Uso actual del procesador">
-                            <div class="monitor-label">CPU</div>
-                            <div class="circular-progress" data-percentage="74">
-                                <div class="progress-circle">
-                                    <span class="percentage">74%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="monitor-item" data-tooltip="Memoria RAM disponible">
-                            <div class="monitor-label">RAM</div>
-                            <div class="circular-progress" data-percentage="58">
-                                <div class="progress-circle">
-                                    <span class="percentage">58%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="monitor-item" data-tooltip="Espacio en disco utilizado">
-                            <div class="monitor-label">Disco</div>
-                            <div class="circular-progress" data-percentage="91">
-                                <div class="progress-circle">
-                                    <span class="percentage">91%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+              
                 <!-- Widget de Actividad Reciente -->
-                <div class="widget activity-widget">
-                    <div class="widget-header">
-                        <h3>Actividad Reciente</h3>
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-icon success">
-                                <i class="fas fa-check"></i>
+                <article class="widget activity-widget" role="region" aria-labelledby="activity-title">
+                    <header class="widget-header">
+                        <h2 id="activity-title">Actividad Reciente</h2>
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                    </header>
+                    <ul class="activity-list" role="log" aria-label="Registro de actividades del sistema" aria-live="polite">
+                        <li class="activity-item" role="listitem">
+                            <div class="activity-icon success" role="img" aria-label="Éxito">
+                                <i class="fas fa-check" aria-hidden="true"></i>
                             </div>
                             <div class="activity-content">
                                 <span class="activity-text">Usuario registrado exitosamente</span>
-                                <span class="activity-time">Hace 2 minutos</span>
+                                <time class="activity-time" datetime="2024-01-01T10:58:00">Hace 2 minutos</time>
                             </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon warning">
-                                <i class="fas fa-exclamation-triangle"></i>
+                        </li>
+                        <li class="activity-item" role="listitem">
+                            <div class="activity-icon warning" role="img" aria-label="Advertencia">
+                                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
                             </div>
                             <div class="activity-content">
                                 <span class="activity-text">Uso de memoria alto detectado</span>
-                                <span class="activity-time">Hace 5 minutos</span>
+                                <time class="activity-time" datetime="2024-01-01T10:55:00">Hace 5 minutos</time>
                             </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon info">
-                                <i class="fas fa-info"></i>
+                        </li>
+                        <li class="activity-item" role="listitem">
+                            <div class="activity-icon info" role="img" aria-label="Información">
+                                <i class="fas fa-info" aria-hidden="true"></i>
                             </div>
                             <div class="activity-content">
                                 <span class="activity-text">Actualización del sistema completada</span>
-                                <span class="activity-time">Hace 10 minutos</span>
+                                <time class="activity-time" datetime="2024-01-01T10:50:00">Hace 10 minutos</time>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Widget de Gráfico de Ventas -->
-                <div class="widget chart-widget">
-                    <div class="widget-header">
-                        <h3>Tendencias de Ventas</h3>
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="salesChart"></canvas>
-                    </div>
-                </div>
+                        </li>
+                    </ul>
+                </article>
 
                 <!-- Widget de Notificaciones -->
-                <div class="widget notifications-widget">
-                    <div class="widget-header">
-                        <h3>Notificaciones</h3>
-                        <div class="notification-badge">3</div>
-                    </div>
-                    <div class="notifications-list">
-                        <div class="notification-item unread">
-                            <i class="fas fa-envelope"></i>
-                            <span>Nuevo mensaje del equipo de soporte</span>
-                        </div>
-                        <div class="notification-item unread">
-                            <i class="fas fa-bell"></i>
-                            <span>Mantenimiento programado en 2 horas</span>
-                        </div>
-                        <div class="notification-item">
-                            <i class="fas fa-info-circle"></i>
-                            <span>Actualización de seguridad disponible</span>
-                        </div>
-                    </div>
-                </div>
+                <article class="widget notifications-widget" role="region" aria-labelledby="notifications-title">
+                    <header class="widget-header">
+                        <h2 id="notifications-title">Notificaciones</h2>
+                        <div class="notification-badge" aria-label="3 notificaciones no leídas">3</div>
+                    </header>
+                    <ul class="notifications-list" role="list" aria-label="Lista de notificaciones">
+                        <li class="notification-item unread" role="listitem" tabindex="0" aria-labelledby="notif-1">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span id="notif-1">Nuevo mensaje del equipo de soporte</span>
+                        </li>
+                        <li class="notification-item unread" role="listitem" tabindex="0" aria-labelledby="notif-2">
+                            <i class="fas fa-bell" aria-hidden="true"></i>
+                            <span id="notif-2">Mantenimiento programado en 2 horas</span>
+                        </li>
+                        <li class="notification-item" role="listitem" tabindex="0" aria-labelledby="notif-3">
+                            <i class="fas fa-info-circle" aria-hidden="true"></i>
+                            <span id="notif-3">Actualización de seguridad disponible</span>
+                        </li>
+                    </ul>
+                </article>
 
                 <!-- Widget de Mapa de Usuarios en Tiempo Real -->
-                <div class="widget world-map-widget">
-                    <div class="widget-header">
-                        <h3>Usuarios Globales</h3>
-                        <div class="live-indicator">
-                            <span class="pulse-dot"></span>
+                <article class="widget world-map-widget" role="region" aria-labelledby="worldmap-title">
+                    <header class="widget-header">
+                        <h2 id="worldmap-title">Usuarios Globales</h2>
+                        <div class="live-indicator" role="status" aria-live="polite" aria-label="Datos en tiempo real">
+                            <span class="pulse-dot" aria-hidden="true"></span>
                             <span>En vivo</span>
                         </div>
-                    </div>
+                    </header>
                     <div class="world-map-container">
-                        <div class="world-map">
-                            <div class="user-dot" style="top: 25%; left: 20%;" data-country="EE.UU." data-users="1,247"></div>
-                            <div class="user-dot" style="top: 35%; left: 50%;" data-country="España" data-users="892"></div>
-                            <div class="user-dot" style="top: 40%; left: 55%;" data-country="Francia" data-users="634"></div>
-                            <div class="user-dot" style="top: 45%; left: 70%;" data-country="India" data-users="2,156"></div>
-                            <div class="user-dot" style="top: 60%; left: 15%;" data-country="Brasil" data-users="743"></div>
-                            <div class="user-dot" style="top: 70%; left: 85%;" data-country="Australia" data-users="432"></div>
-                            <div class="user-dot" style="top: 20%; left: 75%;" data-country="China" data-users="3,021"></div>
+                        <div class="world-map" role="img" aria-label="Mapa mundial con distribución de usuarios activos">
+                            <button class="user-dot" style="top: 25%; left: 20%;" data-country="EE.UU." data-users="1,247" 
+                                    aria-label="Estados Unidos: 1247 usuarios activos" title="EE.UU.: 1,247 usuarios"></button>
+                            <button class="user-dot" style="top: 35%; left: 50%;" data-country="España" data-users="892" 
+                                    aria-label="España: 892 usuarios activos" title="España: 892 usuarios"></button>
+                            <button class="user-dot" style="top: 40%; left: 55%;" data-country="Francia" data-users="634" 
+                                    aria-label="Francia: 634 usuarios activos" title="Francia: 634 usuarios"></button>
+                            <button class="user-dot" style="top: 45%; left: 70%;" data-country="India" data-users="2,156" 
+                                    aria-label="India: 2156 usuarios activos" title="India: 2,156 usuarios"></button>
+                            <button class="user-dot" style="top: 60%; left: 15%;" data-country="Brasil" data-users="743" 
+                                    aria-label="Brasil: 743 usuarios activos" title="Brasil: 743 usuarios"></button>
+                            <button class="user-dot" style="top: 70%; left: 85%;" data-country="Australia" data-users="432" 
+                                    aria-label="Australia: 432 usuarios activos" title="Australia: 432 usuarios"></button>
+                            <button class="user-dot" style="top: 20%; left: 75%;" data-country="China" data-users="3,021" 
+                                    aria-label="China: 3021 usuarios activos" title="China: 3,021 usuarios"></button>
                         </div>
-                        <div class="map-legend">
+                        <div class="map-legend" role="legend" aria-label="Leyenda del mapa de actividad de usuarios">
                             <div class="legend-item">
-                                <div class="legend-dot high"></div>
+                                <div class="legend-dot high" aria-hidden="true"></div>
                                 <span>Alta actividad (1000+)</span>
                             </div>
                             <div class="legend-item">
-                                <div class="legend-dot medium"></div>
+                                <div class="legend-dot medium" aria-hidden="true"></div>
                                 <span>Media actividad (500-1000)</span>
                             </div>
                             <div class="legend-item">
-                                <div class="legend-dot low"></div>
+                                <div class="legend-dot low" aria-hidden="true"></div>
                                 <span>Baja actividad (&lt;500)</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
                 <!-- Widget de Clima del Servidor -->
-                <div class="widget weather-widget">
-                    <div class="widget-header">
-                        <h3>Estado del Servidor</h3>
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div class="weather-content">
+                <article class="widget weather-widget" role="region" aria-labelledby="server-status-title">
+                    <header class="widget-header">
+                        <h2 id="server-status-title">Estado del Servidor</h2>
+                        <i class="fas fa-server" aria-hidden="true"></i>
+                    </header>
+                    <div class="weather-content" role="status" aria-live="polite">
                         <div class="weather-main">
-                            <div class="weather-icon">
-                                <i class="fas fa-sun weather-sunny"></i>
+                            <div class="weather-icon" role="img" aria-label="Estado óptimo del servidor">
+                                <i class="fas fa-sun weather-sunny" aria-hidden="true"></i>
                             </div>
                             <div class="weather-info">
-                                <span class="weather-status">Funcionando Óptimamente</span>
-                                <span class="weather-temp">18°C</span>
+                                <span class="weather-status" id="server-status">Funcionando Óptimamente</span>
+                                <data class="weather-temp" value="18">18°C</data>
                             </div>
                         </div>
-                        <div class="weather-details">
+                        <dl class="weather-details">
                             <div class="weather-detail">
-                                <i class="fas fa-tint"></i>
-                                <span>Humedad: 45%</span>
+                                <dt><i class="fas fa-tint" aria-hidden="true"></i> Humedad:</dt>
+                                <dd><data value="45">45%</data></dd>
                             </div>
                             <div class="weather-detail">
-                                <i class="fas fa-wind"></i>
-                                <span>Ventilación: Normal</span>
+                                <dt><i class="fas fa-wind" aria-hidden="true"></i> Ventilación:</dt>
+                                <dd>Normal</dd>
                             </div>
                             <div class="weather-detail">
-                                <i class="fas fa-thermometer-half"></i>
-                                <span>Temperatura CPU: 52°C</span>
+                                <dt><i class="fas fa-thermometer-half" aria-hidden="true"></i> Temperatura CPU:</dt>
+                                <dd><data value="52">52°C</data></dd>
                             </div>
-                        </div>
+                        </dl>
                     </div>
-                </div>
+                </article>
 
                 <!-- Widget de Timeline Social -->
-                <div class="widget social-widget">
-                    <div class="widget-header">
-                        <h3>Timeline de Eventos</h3>
-                        <i class="fas fa-stream"></i>
-                    </div>
-                    <div class="social-timeline">
-                        <div class="timeline-item">
+                <article class="widget social-widget" role="region" aria-labelledby="timeline-title">
+                    <header class="widget-header">
+                        <h2 id="timeline-title">Timeline de Eventos</h2>
+                        <i class="fas fa-stream" aria-hidden="true"></i>
+                    </header>
+                    <ol class="social-timeline" role="log" aria-label="Cronología de eventos del sistema" aria-live="polite">
+                        <li class="timeline-item" role="listitem">
                             <div class="timeline-avatar">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2310b981'/%3E%3Ctext x='16' y='20' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E" alt="System">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2310b981'/%3E%3Ctext x='16' y='20' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E" alt="Avatar del sistema">
                             </div>
                             <div class="timeline-content">
                                 <strong>Sistema</strong> completó backup automático
-                                <span class="timeline-time">Hace 5 min</span>
+                                <time class="timeline-time" datetime="2024-01-01T10:55:00">Hace 5 min</time>
                             </div>
-                        </div>
-                        <div class="timeline-item">
+                        </li>
+                        <li class="timeline-item" role="listitem">
                             <div class="timeline-avatar">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%234f46e5'/%3E%3Ctext x='16' y='20' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3EU%3C/text%3E%3C/svg%3E" alt="Usuario">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%234f46e5'/%3E%3Ctext x='16' y='20' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3EU%3C/text%3E%3C/svg%3E" alt="Avatar de usuario">
                             </div>
                             <div class="timeline-content">
                                 <strong>Usuario María</strong> se conectó desde Madrid
-                                <span class="timeline-time">Hace 12 min</span>
+                                <time class="timeline-time" datetime="2024-01-01T10:48:00">Hace 12 min</time>
                             </div>
-                        </div>
-                        <div class="timeline-item">
+                        </li>
+                        <li class="timeline-item" role="listitem">
                             <div class="timeline-avatar">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23f59e0b'/%3E%3Ctext x='16' y='20' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Admin">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23f59e0b'/%3E%3Ctext x='16' y='20' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Avatar del administrador">
                             </div>
                             <div class="timeline-content">
                                 <strong>Admin</strong> actualizó configuración de seguridad
-                                <span class="timeline-time">Hace 25 min</span>
+                                <time class="timeline-time" datetime="2024-01-01T10:35:00">Hace 25 min</time>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Widget de Análisis de Sentimientos -->
-                <div class="widget sentiment-widget">
-                    <div class="widget-header">
-                        <h3>Satisfacción del Cliente</h3>
-                        <i class="fas fa-smile"></i>
-                    </div>
-                    <div class="sentiment-content">
-                        <div class="sentiment-score">
-                            <div class="score-circle">
-                                <span class="score-number">8.7</span>
-                                <span class="score-label">/10</span>
-                            </div>
-                        </div>
-                        <div class="sentiment-breakdown">
-                            <div class="sentiment-item">
-                                <i class="fas fa-laugh sentiment-positive"></i>
-                                <span class="sentiment-text">Muy Positivo</span>
-                                <span class="sentiment-percentage">64%</span>
-                            </div>
-                            <div class="sentiment-item">
-                                <i class="fas fa-smile sentiment-good"></i>
-                                <span class="sentiment-text">Positivo</span>
-                                <span class="sentiment-percentage">28%</span>
-                            </div>
-                            <div class="sentiment-item">
-                                <i class="fas fa-meh sentiment-neutral"></i>
-                                <span class="sentiment-text">Neutral</span>
-                                <span class="sentiment-percentage">8%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Widget de QR Code Dinámico -->
-                <div class="widget qr-widget">
-                    <div class="widget-header">
-                        <h3>Acceso Móvil</h3>
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <div class="qr-content">
-                        <div class="qr-code" id="qrCodeContainer">
-                            <div class="qr-pattern">
-                                <div class="qr-square"></div>
-                                <div class="qr-square"></div>
-                                <div class="qr-square"></div>
-                                <div class="qr-square large"></div>
-                                <div class="qr-square"></div>
-                                <div class="qr-square"></div>
-                                <div class="qr-square large"></div>
-                                <div class="qr-square"></div>
-                                <div class="qr-square"></div>
-                            </div>
-                        </div>
-                        <p class="qr-description">Escanea para acceder desde tu móvil</p>
-                        <button class="qr-refresh" onclick="refreshQR()">
-                            <i class="fas fa-sync-alt"></i>
-                            Renovar código
-                        </button>
-                    </div>
-                </div>
+                        </li>
+                    </ol>
+                </article>
             </div>
         </section>
 
-        <!-- Secciones adicionales (OOHDM Navigation Structure) -->
-        <section id="analytics-section" class="section">
-            <header class="section-header">
-                <h1>Analytics</h1>
-                <p>Análisis detallado de métricas</p>
-            </header>
-            <div class="content-placeholder">
-                <i class="fas fa-chart-pie"></i>
-                <p>Sección de Analytics en construcción...</p>
-            </div>
-        </section>
+      
 
-        <section id="users-section" class="section">
+        <section id="users-section" class="section" role="region" aria-labelledby="users-title">
             <header class="section-header">
-                <h1>Gestión de Usuarios</h1>
-                <p>Administrar usuarios del sistema</p>
+                <h1 id="users-title">Gestión de Usuarios</h1>
+                <p class="section-description">Administrar usuarios del sistema</p>
             </header>
-            <div class="content-placeholder">
-                <i class="fas fa-users"></i>
+            <div class="content-placeholder" role="status" aria-live="polite">
+                <i class="fas fa-users" aria-hidden="true"></i>
                 <p>Sección de Usuarios en construcción...</p>
             </div>
         </section>
 
-        <section id="tasks-section" class="section">
+        <section id="tasks-section" class="section" role="region" aria-labelledby="tasks-title-main">
             <header class="section-header">
-                <h1>Gestión de Tareas</h1>
-                <p>Monitorear y administrar tareas</p>
+                <h1 id="tasks-title-main">Gestión de Tareas</h1>
+                <p class="section-description">Monitorear y administrar tareas</p>
             </header>
-            <div class="content-placeholder">
-                <i class="fas fa-tasks"></i>
+            <div class="content-placeholder" role="status" aria-live="polite">
+                <i class="fas fa-tasks" aria-hidden="true"></i>
                 <p>Sección de Tareas en construcción...</p>
             </div>
         </section>
 
-        <section id="settings-section" class="section">
+        <section id="settings-section" class="section" role="region" aria-labelledby="settings-title">
             <header class="section-header">
-                <h1>Configuración</h1>
-                <p>Ajustes del sistema</p>
+                <h1 id="settings-title">Configuración</h1>
+                <p class="section-description">Ajustes del sistema</p>
             </header>
-            <div class="content-placeholder">
-                <i class="fas fa-cog"></i>
+            <div class="content-placeholder" role="status" aria-live="polite">
+                <i class="fas fa-cog" aria-hidden="true"></i>
                 <p>Sección de Configuración en construcción...</p>
             </div>
         </section>
     </main>
 
-  
+    <!-- Footer semántico del dashboard -->
+    <footer class="dashboard-footer" role="contentinfo">
+        <div class="footer-content">
+            <!-- Información del sistema -->
+            <section class="footer-section" aria-labelledby="system-info-title">
+                <h3 id="system-info-title">Información del Sistema</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-server" aria-hidden="true"></i>
+                        <span>Servidor: prod-srv-01</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-code-branch" aria-hidden="true"></i>
+                        <span>Versión: v2.1.4</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-database" aria-hidden="true"></i>
+                        <span>Base de Datos: MySQL 8.0</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <span>SSL Activado</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Estado del sistema -->
+            <section class="footer-section" aria-labelledby="system-status-title">
+                <h3 id="system-status-title">Estado del Sistema</h3>
+                <div class="system-status">
+                    <div class="status-item">
+                        <div class="status-dot online" aria-hidden="true"></div>
+                        <span>API Principal: Operativo</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-dot online" aria-hidden="true"></div>
+                        <span>Base de Datos: Conectada</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-dot online" aria-hidden="true"></div>
+                        <span>CDN: Funcionando</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-dot" aria-hidden="true"></div>
+                        <span>Backup: Programado</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Soporte y contacto -->
+            <section class="footer-section" aria-labelledby="support-title">
+                <h3 id="support-title">Soporte</h3>
+                <p>¿Necesitas ayuda? Nuestro equipo está disponible 24/7</p>
+                <ul>
+                    <li>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:support@adminpanel.com">support@adminpanel.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                        <a href="#" aria-label="Abrir documentación">Documentación</a>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Enlaces rápidos -->
+            <section class="footer-section" aria-labelledby="quick-links-title">
+                <h3 id="quick-links-title">Enlaces Rápidos</h3>
+                <nav aria-label="Enlaces de navegación del footer">
+                    <ul>
+                        <li>
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                            <a href="#dashboard">Panel Principal</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-bug" aria-hidden="true"></i>
+                            <a href="#" aria-label="Reportar un error">Reportar Bug</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-question-circle" aria-hidden="true"></i>
+                            <a href="#" aria-label="Preguntas frecuentes">FAQ</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                            <a href="#" aria-label="Cerrar sesión">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+
+        <!-- Información de copyright y última actualización -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 AdminPanel Dashboard. Todos los derechos reservados.</p>
+            <p>Desarrollado con metodología OOHDM | Última actualización: <time id="last-update" datetime="2024-01-01T11:00:00">11:00:00</time></p>
+        </div>
+    </footer>
+
+    <!-- Región de anuncios para lectores de pantalla -->
+    <div id="announcements" role="region" aria-live="polite" aria-label="Anuncios del sistema" class="sr-only"></div>
+    
+    <!-- Región de alertas -->
+    <div id="alerts" role="alert" aria-live="assertive" class="sr-only"></div>
 
     <script src="script.js"></script>
 </body>
